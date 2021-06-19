@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demp-pod-pvc
+spec:
+  containers:
+    - name: persistent-container
+      image: nginx
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: persistent-pod-storage
+
+  volumes:
+    - name: persistent-pod-storage
+      persistentVolumeClaim:
+        claimName: demo-pvc
